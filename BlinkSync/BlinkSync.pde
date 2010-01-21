@@ -1,3 +1,24 @@
+/*
+Arduino Copier - An arduino sketch that can upload sketches to other boards.
+Copyright (C) 2010 George Caley.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+*/
+
+// if COPY gets #defined, then the Copier code and the code
+// for the upload button are included with the BlinkSync sketch
 #define COPY
 
 int led = 13;
@@ -7,7 +28,7 @@ int syncWait = 2000;
 int r;
 
 #ifdef COPY
-int trigger = 2;
+int trigger = 2; // the upload button
 #endif
 
 void setup() {
@@ -25,7 +46,7 @@ void loop() {
     digitalWrite(led, HIGH);
     while(digitalRead(trigger) == LOW);
     digitalWrite(led, LOW);
-    copier();
+    copier(); // this triggers the copy
   }
   #endif
   
