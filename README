@@ -1,0 +1,10 @@
+Here is an Arduino sketch I've developed that is able to "copy itself" to other boards it is connected to via serial.
+
+It is an implementation of the STK500 protocol within an Arduino sketch. STK500 is used by avrdude and the Arduino IDE to write sketches to AVR chips.
+
+A normal sketch ('BlinkSync' is used in the example) is first compiled and then converted from the Intel Hex format to a series of bytes written in C (by a Python script, embed-arduino.py), which can be inserted into the Copier sketch as the data to be written to the destination Arduinos.
+Afterwards, the Copier sketch and the BlinkSync sketch are stuck together, resulting in a sketch that performs both the original task and the copying of that task to other boards.
+
+The new BlinkVirus sketch, on the other hand, is able to self-replicate (i.e. the copied version is a copier as well). Instructions on using it are included in BlinkVirus.pde.
+
+WARNING: In its current state, the Copier sketch has only been tested on ATmega328s. To target different AVRs, you may need to change some of the programming parameters. It's always useful to set your Arduino IDE to verbose and upload a simple sketch to your board, and take note of the bytes that get sent and received by your computer.
